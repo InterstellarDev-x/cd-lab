@@ -16,14 +16,14 @@ Run this in a terminal and the whole lab lands in
 `./compiler-lab-programs`, extracted and ready:
 
 ```bash
-curl -sSL <short-link> | bash
+curl -sSL https://tinyurl.com/28ho4fda | bash
 ```
 
 Add `--setup` and it also creates a virtual environment and installs the
 dependencies:
 
 ```bash
-curl -sSL <short-link> | bash -s -- --setup
+curl -sSL https://tinyurl.com/28ho4fda | bash -s -- --setup
 ```
 
 Or do it manually:
