@@ -10,14 +10,14 @@ Run this in a terminal and the whole lab lands in `./cd-lab`,
 extracted and ready:
 
 ```bash
-curl -sSL <short-link> | bash
+curl -sSL https://tinyurl.com/25kl8jg2 | bash
 ```
 
 Add `--setup` and it also creates the venv and installs the
 requirements:
 
 ```bash
-curl -sSL <short-link> | bash -s -- --setup
+curl -sSL https://tinyurl.com/25kl8jg2 | bash -s -- --setup
 ```
 
 (The short link points at `setup.sh` in the repo; the script

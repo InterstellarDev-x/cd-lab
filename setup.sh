@@ -2,7 +2,7 @@
 # CD Lab one-line installer — Compiler Design Lab, Experiments 1-7.
 #
 # Usage:
-#   curl -sSL <short-link> | bash
+#   curl -sSL https://tinyurl.com/25kl8jg2 | bash
 #
 # What it does:
 #   1. Downloads the cd-lab repo as a tarball from GitHub.
@@ -14,9 +14,9 @@
 #   --setup    also create a venv and install requirements.txt
 #
 # Examples:
-#   curl -sSL <short-link> | bash
-#   curl -sSL <short-link> | bash -s -- --setup
-#   curl -sSL <short-link> | bash -s -- my-folder --setup
+#   curl -sSL https://tinyurl.com/25kl8jg2 | bash
+#   curl -sSL https://tinyurl.com/25kl8jg2 | bash -s -- --setup
+#   curl -sSL https://tinyurl.com/25kl8jg2 | bash -s -- my-folder --setup
 set -euo pipefail
 
 REPO="InterstellarDev-x/cd-lab"
@@ -59,5 +59,5 @@ else
     echo "  pip install -r requirements.txt"
     echo ""
     echo "Or re-run with --setup to do that automatically:"
-    echo "  curl -sSL <short-link> | bash -s -- --setup"
+    echo "  curl -sSL https://tinyurl.com/25kl8jg2 | bash -s -- --setup"
 fi
