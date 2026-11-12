@@ -10,6 +10,20 @@ Usage:
 
 import sys
 
+import os
+
+# Files live next to this script, not next to your terminal's folder.
+# __file__ is this script's own path, so BASE_DIR is its folder - the
+# Python equivalent of JS __dirname. Every file below is resolved
+# through _path(), so the program works no matter which folder you
+# run it from.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _path(name):
+    """Resolve *name* against this script's folder."""
+    return os.path.join(BASE_DIR, name)
+
 
 def analyze_file(filename):
     """Read *filename* and print line/word/character statistics."""
@@ -33,4 +47,4 @@ def analyze_file(filename):
 
 
 if __name__ == "__main__":
-    analyze_file(sys.argv[1] if len(sys.argv) > 1 else "input.txt")
+    analyze_file(_path(sys.argv[1] if len(sys.argv) > 1 else "input.txt"))

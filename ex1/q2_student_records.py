@@ -9,6 +9,20 @@ Usage:
 
 import sys
 
+import os
+
+# Files live next to this script, not next to your terminal's folder.
+# __file__ is this script's own path, so BASE_DIR is its folder - the
+# Python equivalent of JS __dirname. Every file below is resolved
+# through _path(), so the program works no matter which folder you
+# run it from.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _path(name):
+    """Resolve *name* against this script's folder."""
+    return os.path.join(BASE_DIR, name)
+
 
 def student_data():
     try:
@@ -33,10 +47,10 @@ def student_data():
                 print("Please enter a number for marks.")
         records.append((roll, name, marks))
 
-    with open("students.txt", "w") as f:
+    with open(_path("students.txt"), "w") as f:
         for roll, name, marks in records:
             f.write(f"{roll} {name} {marks}\n")
-    print("Records saved to students.txt")
+    print(f"Records saved to {_path('students.txt')}")
 
     marks_list = [r[2] for r in records]
     print("Average Marks:", sum(marks_list) / n)

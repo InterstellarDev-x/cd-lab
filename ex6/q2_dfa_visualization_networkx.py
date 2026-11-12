@@ -18,6 +18,20 @@ matplotlib.use("Agg")  # headless: save to file instead of showing a window
 import matplotlib.pyplot as plt
 import networkx as nx
 
+import os
+
+# Files live next to this script, not next to your terminal's folder.
+# __file__ is this script's own path, so BASE_DIR is its folder - the
+# Python equivalent of JS __dirname. Every file below is resolved
+# through _path(), so the program works no matter which folder you
+# run it from.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _path(name):
+    """Resolve *name* against this script's folder."""
+    return os.path.join(BASE_DIR, name)
+
 # DFA structure
 dfa = {
     "q0": {"a": "q0", "b": "q1"},
@@ -39,5 +53,5 @@ edge_labels = nx.get_edge_attributes(G, "label")
 nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
 
 plt.title("DFA for Regular Expression a*b")
-plt.savefig("dfa_a_star_b.png")
-print("DFA diagram saved to dfa_a_star_b.png")
+plt.savefig(_path("dfa_a_star_b.png"))
+print(f"DFA diagram saved to {_path('dfa_a_star_b.png')}")

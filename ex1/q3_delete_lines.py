@@ -10,6 +10,20 @@ Usage:
 
 import sys
 
+import os
+
+# Files live next to this script, not next to your terminal's folder.
+# __file__ is this script's own path, so BASE_DIR is its folder - the
+# Python equivalent of JS __dirname. Every file below is resolved
+# through _path(), so the program works no matter which folder you
+# run it from.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _path(name):
+    """Resolve *name* against this script's folder."""
+    return os.path.join(BASE_DIR, name)
+
 
 def delete_lines(filename, remove_lines):
     """Delete lines whose 1-based numbers are in *remove_lines*."""
@@ -37,4 +51,4 @@ def delete_lines(filename, remove_lines):
 if __name__ == "__main__":
     filename = sys.argv[1] if len(sys.argv) > 1 else "lines.txt"
     numbers = [int(a) for a in sys.argv[2:]] if len(sys.argv) > 2 else [3, 6]
-    delete_lines(filename, numbers)
+    delete_lines(_path(filename), numbers)

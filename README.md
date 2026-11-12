@@ -147,6 +147,10 @@ python q1_arithmetic_parser.py   # interactive: Enter expression (or exit):
 ## Notes
 
 - Every program was run and its output verified on Python 3.12.
+- All file names are resolved relative to the script's own folder
+  (Python's version of JS `__dirname`), so run a program from any
+  folder — its input and output files are always found and created
+  next to the script, never in the folder you happen to be in.
 - PLY writes `parser.out` / `parsetab.py` next to the Experiment 7
   script on first run — that is normal PLY behaviour.
 - Sample inputs used by the programs live next to them

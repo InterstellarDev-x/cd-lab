@@ -15,6 +15,20 @@ Usage:
 
 from graphviz import Digraph
 
+import os
+
+# Files live next to this script, not next to your terminal's folder.
+# __file__ is this script's own path, so BASE_DIR is its folder - the
+# Python equivalent of JS __dirname. Every file below is resolved
+# through _path(), so the program works no matter which folder you
+# run it from.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _path(name):
+    """Resolve *name* against this script's folder."""
+    return os.path.join(BASE_DIR, name)
+
 dot = Digraph()
 
 # States
@@ -26,10 +40,10 @@ dot.edge("q0", "q0", label="a")
 dot.edge("q0", "q1", label="b")
 
 try:
-    dot.render("dfa_a_star_b", view=False, cleanup=True)
-    print("DFA diagram rendered to dfa_a_star_b.pdf")
+    dot.render(_path("dfa_a_star_b"), view=False, cleanup=True)
+    print(f"DFA diagram rendered to {_path('dfa_a_star_b.pdf')}")
 except Exception as e:
     # 'dot' binary missing: keep the DOT source for later rendering.
-    dot.save("dfa_a_star_b.gv")
+    dot.save(_path("dfa_a_star_b.gv"))
     print("Could not render (Graphviz 'dot' not installed):", e)
-    print("DOT source saved to dfa_a_star_b.gv")
+    print(f"DOT source saved to {_path('dfa_a_star_b.gv')}")

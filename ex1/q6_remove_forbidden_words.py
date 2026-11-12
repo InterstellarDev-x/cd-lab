@@ -12,6 +12,20 @@ Usage:
 import sys
 from collections import Counter
 
+import os
+
+# Files live next to this script, not next to your terminal's folder.
+# __file__ is this script's own path, so BASE_DIR is its folder - the
+# Python equivalent of JS __dirname. Every file below is resolved
+# through _path(), so the program works no matter which folder you
+# run it from.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _path(name):
+    """Resolve *name* against this script's folder."""
+    return os.path.join(BASE_DIR, name)
+
 
 def sanitize(source, drop, report):
     """Remove forbidden words from *source* and write *report*."""
@@ -43,4 +57,4 @@ if __name__ == "__main__":
     source = sys.argv[1] if len(sys.argv) > 1 else "words.txt"
     drop = sys.argv[2] if len(sys.argv) > 2 else "drop.txt"
     report = sys.argv[3] if len(sys.argv) > 3 else "report.txt"
-    sanitize(source, drop, report)
+    sanitize(_path(source), _path(drop), _path(report))

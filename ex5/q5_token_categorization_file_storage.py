@@ -32,6 +32,20 @@ from collections import Counter
 
 from lark import Lark, Token
 
+import os
+
+# Files live next to this script, not next to your terminal's folder.
+# __file__ is this script's own path, so BASE_DIR is its folder - the
+# Python equivalent of JS __dirname. Every file below is resolved
+# through _path(), so the program works no matter which folder you
+# run it from.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _path(name):
+    """Resolve *name* against this script's folder."""
+    return os.path.join(BASE_DIR, name)
+
 KEYWORDS = {"int", "float", "if", "else", "while", "return"}
 
 grammar = r"""
@@ -64,10 +78,10 @@ for token in tree.scan_values(lambda v: isinstance(v, Token)):
     elif token.type == "OPERATOR":
         ops.append(token.value)
 
-open("identifiers.txt", "w").write("\n".join(ids))
-open("numbers.txt", "w").write("\n".join(nums))
-open("operators.txt", "w").write("\n".join(ops))
-open("keywords.txt", "w").write("\n".join(keys))
+open(_path("identifiers.txt"), "w").write("\n".join(ids))
+open(_path("numbers.txt"), "w").write("\n".join(nums))
+open(_path("operators.txt"), "w").write("\n".join(ops))
+open(_path("keywords.txt"), "w").write("\n".join(keys))
 
 print("Identifier Frequency:", Counter(ids))
 print("Number Frequency:", Counter(nums))

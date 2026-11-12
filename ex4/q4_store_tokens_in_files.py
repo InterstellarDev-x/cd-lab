@@ -22,6 +22,20 @@ Usage:
 
 import ply.lex as lex
 
+import os
+
+# Files live next to this script, not next to your terminal's folder.
+# __file__ is this script's own path, so BASE_DIR is its folder - the
+# Python equivalent of JS __dirname. Every file below is resolved
+# through _path(), so the program works no matter which folder you
+# run it from.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _path(name):
+    """Resolve *name* against this script's folder."""
+    return os.path.join(BASE_DIR, name)
+
 # Reserved words are recognised inside t_ID and re-typed as KEYWORD.
 RESERVED = {"int", "float", "if", "else", "while", "return"}
 
@@ -35,10 +49,10 @@ def t_PLUS(t):
     return t
 
 FILES = {
-    "ID": "identifiers.txt",
-    "NUM": "numbers.txt",
-    "PLUS": "operators.txt",
-    "KEYWORD": "keywords.txt",
+    "ID": _path("identifiers.txt"),
+    "NUM": _path("numbers.txt"),
+    "PLUS": _path("operators.txt"),
+    "KEYWORD": _path("keywords.txt"),
 }
 
 
