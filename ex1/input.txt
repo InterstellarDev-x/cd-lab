@@ -1,0 +1,12 @@
+Lexical analysis is the first phase of a compiler.
+It converts a stream of characters into a stream of tokens.
+
+Tokens are the smallest meaningful units of a program.
+Keywords, identifiers, operators, literals and delimiters are token types.
+
+The scanner reads source code from a file.
+It skips whitespace and comments while scanning.
+Each token carries a type and a value.
+The parser consumes tokens and builds a syntax tree.
+File handling lets the analyzer read input and write output.
+This is the last line of the sample file.

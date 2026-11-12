@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+# PLY generated tables
+parser.out
+parsetab.py
+# Program outputs (generated when you run the experiments)
+students.txt
+destination.txt
+report.txt
+identifiers.txt
+numbers.txt
+operators.txt
+keywords.txt
+dfa_a_star_b.png
+dfa_a_star_b.pdf
+dfa_a_star_b.gv
