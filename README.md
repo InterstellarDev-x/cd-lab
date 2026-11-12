@@ -77,6 +77,10 @@ PDF exactly, and the two differ in three places:
 
 ## Notes on running
 
+- All file names are resolved relative to the script's own folder
+  (Python's version of JS `__dirname`), so run a program from any
+  folder — its input and output files are always found and created
+  next to the script, never in the folder you happen to be in.
 - Experiment 4 Q5 and Experiment 5 Q1–Q3, Q5 read multiple lines: type
   `END` on its own line to finish entering code.
 - Experiment 6 opens a Matplotlib window with the DFA diagram. On a

@@ -11,11 +11,24 @@ Sample run (2 students: 101 Aditya 85, 102 Rohan 92):
     Highest Marks: 92.0
     Lowest Marks: 85.0
 """
+import os
+
+# Files live next to this script, not next to your terminal's folder.
+# __file__ is this script's own path, so BASE_DIR is its folder - the
+# Python equivalent of JS __dirname. Every file below is resolved
+# through _path(), so the program works no matter which folder you
+# run it from.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _path(name):
+    """Resolve *name* against this script's folder."""
+    return os.path.join(BASE_DIR, name)
 
 n = int(input("Enter number of students: "))
 marks = []
 
-f = open("students.txt", "w")
+f = open(_path("students.txt"), "w")
 
 for i in range(n):
     roll = input("Roll No: ")

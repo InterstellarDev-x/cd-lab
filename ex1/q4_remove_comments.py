@@ -11,9 +11,25 @@ Sample run (source: src.txt, dest: dest.txt, lines:
     File copied successfully!
     dest.txt then contains "x = 10" and "y = 20".
 """
+import os
+
+# Files live next to this script, not next to your terminal's folder.
+# __file__ is this script's own path, so BASE_DIR is its folder - the
+# Python equivalent of JS __dirname. Every file below is resolved
+# through _path(), so the program works no matter which folder you
+# run it from.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _path(name):
+    """Resolve *name* against this script's folder."""
+    return os.path.join(BASE_DIR, name)
 
 src = input("Enter source file name: ")
 dest = input("Enter destination file name: ")
+
+src = _path(src)
+dest = _path(dest)
 
 n = int(input("Enter number of lines: "))
 

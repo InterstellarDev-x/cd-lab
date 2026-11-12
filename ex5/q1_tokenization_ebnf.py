@@ -19,6 +19,20 @@ lists foo : 2, bar : 2, f00 : 1.
 from lark import Lark
 from collections import Counter
 
+import os
+
+# Files live next to this script, not next to your terminal's folder.
+# __file__ is this script's own path, so BASE_DIR is its folder - the
+# Python equivalent of JS __dirname. Every file below is resolved
+# through _path(), so the program works no matter which folder you
+# run it from.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _path(name):
+    """Resolve *name* against this script's folder."""
+    return os.path.join(BASE_DIR, name)
+
 grammar = r"""
 start: (KEYWORD | IDENTIFIER | NUMBER | OPERATOR | DELIMITER)*
 
@@ -58,7 +72,7 @@ files = {
 }
 
 for category, filename in files.items():
-    with open(filename, "w") as f:
+    with open(_path(filename), "w") as f:
         for value in data[category]:
             f.write(value + "\n")
     print("\n" + filename)
